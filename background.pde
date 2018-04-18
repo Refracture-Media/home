@@ -5,13 +5,15 @@ ArrayList<fracture> fractures = new ArrayList<fracture>();
 
 int maxFractures=int(random(20,30));
 int currentFracture;
+int newScreenDimX,newScreenDimY;
+int oldScreenDimX,oldScreenDimY;
 
 color b1, b2;
 
 
 
 void setup() {
-  size( $(window).width(),$(window).height(),P3D );
+  size( $(window).width(),$(window).height());
 
   b1=color(#4ec9c5);
   b2=color(#215654);
@@ -19,8 +21,9 @@ void setup() {
 }
 
 void draw() {
-  //setGradient(0, 0, width, height, b1, b2, Y_AXIS);
-  //setGradient(width, 0, width, height, b2, b1, Y_AXIS);
+  size( $(window).width(),$(window).height());
+  setGradient(0, 0, width, height, b1, b2, Y_AXIS);
+  setGradient(width, 0, width, height, b2, b1, Y_AXIS);
   fill(#0e131a);
   stroke(#0e131a);
   strokeWeight(10);
@@ -90,15 +93,6 @@ class fracture {
     if(y1==y2) {
       fractures.remove(currentFracture);
     }
-    /*pushMatrix();
-    beginShape(LINES);
-    fill(#0e131a);
-    stroke(#0e131a);
-    strokeWeight(10);
-    vertex(x1,y1);
-    vertex(x2,y2);
-    popMatrix();
-    endShape();*/
     line(x1,y1,x2,y2);
   }
   int fStart() {
